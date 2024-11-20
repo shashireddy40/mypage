@@ -3,4 +3,4 @@ my portfolio
 
 touch with shashireddy40@gmail.com
 
-last update on oct 2024
+last update on oct
