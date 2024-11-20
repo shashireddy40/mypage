@@ -1,5 +1,5 @@
 # Shashi.github.io
-Portfolio for Shashidhar
+my portfolio
 
 touch with shashireddy40@gmail.com
 
