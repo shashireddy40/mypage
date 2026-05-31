@@ -163,20 +163,68 @@
                 </div>
             </div>
 
-            <div class="flow-panel">
-                <div class="flow-node">Market Feeds</div>
-                <div class="flow-arrow">-></div>
-                <div class="flow-node">Redpanda</div>
-                <div class="flow-arrow">-></div>
-                <div class="flow-node">ClickHouse</div>
-                <div class="flow-arrow">-></div>
-                <div class="flow-node">FeatureSnapshot</div>
-                <div class="flow-arrow">-></div>
-                <div class="flow-node">Strategies</div>
-                <div class="flow-arrow">-></div>
-                <div class="flow-node">AI Score</div>
-                <div class="flow-arrow">-></div>
-                <div class="flow-node">Risk + Dry Run</div>
+            <div class="strategy-foundation">
+                <div class="foundation-copy">
+                    <span class="project-label">Reusable Quant Architecture</span>
+                    <h3>Foundation layer for any strategy</h3>
+                    <p>
+                        Every strategy starts from the same explainable pipeline: capture market events,
+                        store replayable data, filter deterministic signals, evaluate quality with AI,
+                        and route approved setups through risk-aware execution.
+                    </p>
+                </div>
+
+                <div class="foundation-diagram" aria-label="Quant strategy foundation diagram">
+                    <div class="foundation-stage stage-websocket">
+                        <i class="fa fa-wifi"></i>
+                        <strong>WebSockets</strong>
+                        <span>Ticks, order flow, options, F&O</span>
+                        <div class="stage-tags">
+                            <em>live</em>
+                            <em>stream</em>
+                        </div>
+                    </div>
+                    <div class="foundation-connector"></div>
+                    <div class="foundation-stage stage-storage">
+                        <i class="fa fa-database"></i>
+                        <strong>Storage Layer</strong>
+                        <span>Redpanda, ClickHouse, rollups, replay</span>
+                        <div class="stage-tags">
+                            <em>raw</em>
+                            <em>candles</em>
+                        </div>
+                    </div>
+                    <div class="foundation-connector"></div>
+                    <div class="foundation-stage stage-analyze">
+                        <i class="fa fa-filter"></i>
+                        <strong>Analyze Layer</strong>
+                        <span>Feature engineering, filters, signal rules</span>
+                        <div class="stage-tags">
+                            <em>delta</em>
+                            <em>VWAP</em>
+                        </div>
+                    </div>
+                    <div class="foundation-connector"></div>
+                    <div class="foundation-stage stage-ai">
+                        <i class="fa fa-microchip"></i>
+                        <strong>AI Layer</strong>
+                        <span>Evaluation, scoring, confidence, reasoning</span>
+                        <div class="stage-tags">
+                            <em>LLM</em>
+                            <em>JSON</em>
+                        </div>
+                    </div>
+                    <div class="foundation-connector"></div>
+                    <div class="foundation-stage stage-execute">
+                        <i class="fa fa-paper-plane"></i>
+                        <strong>Execute Layer</strong>
+                        <span>Risk checks, dry-run logs, broker routing</span>
+                        <div class="stage-tags">
+                            <em>risk</em>
+                            <em>orders</em>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="row layer-grid">
