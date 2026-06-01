@@ -1044,9 +1044,40 @@ body {
     border-top: 6px solid #88c5cf;
 }
 
+.tui-detail-hero {
+    border-top: 6px solid #3569a8;
+}
+
+.jumo-detail-hero {
+    border-top: 6px solid #2d7d7a;
+}
+
+.omsa-detail-hero {
+    border-top: 6px solid #c57b2c;
+}
+
 .detail-logo {
     min-height: 360px;
     box-shadow: 0 18px 44px rgba(22, 45, 54, .1), inset 0 0 0 1px #e3eeee;
+}
+
+.project-image-panel {
+    display: flex;
+    min-height: 360px;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border: 1px solid #e3eeee;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 18px 44px rgba(22, 45, 54, .1);
+}
+
+.project-image-panel img {
+    width: 100%;
+    max-height: 320px;
+    border-radius: 6px;
+    object-fit: cover;
 }
 
 .project-detail-hero h1 {
@@ -1125,6 +1156,27 @@ body {
 
 .detail-proof {
     margin-top: 30px;
+}
+
+.tech-pill-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.tech-pill-grid span {
+    display: inline-block;
+    padding: 10px 14px;
+    border: 1px solid #dfe8e7;
+    border-radius: 999px;
+    color: #17313c;
+    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    background: #fff;
+    box-shadow: 0 8px 20px rgba(22, 45, 54, .06);
 }
 
 .project-logo-panel-small {
@@ -1408,6 +1460,11 @@ body {
 
     .detail-logo {
         min-height: 260px;
+        margin-bottom: 24px;
+    }
+
+    .project-image-panel {
+        min-height: 240px;
         margin-bottom: 24px;
     }
 
