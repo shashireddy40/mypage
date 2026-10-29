@@ -3,10 +3,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Shashidhar Reddy — Senior Data Engineer with 10+ years of experience. Market data engineering, Python quant development, AI workflows, and Quantala.">
     <meta name="author" content="Shashidhar Reddy">
+    <meta name="theme-color" content="#070b14">
 
     <title>Shashidhar Reddy | Quant Development & Market Data Engineering</title>
     <link rel="canonical" href="https://shashi.click/">
@@ -16,77 +16,400 @@
     <meta property="og:url" content="https://shashi.click/">
     <link rel="shortcut icon" href="img/a-icon.ico" />
 
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Merriweather:300,400,700" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="css/animate.min.css" type="text/css">
-    <link rel="stylesheet" href="css/creative.css" type="text/css">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js does not work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <style>
+        :root {
+            --bg: #070b14;
+            --bg-2: #0b1222;
+            --text: #e8eef9;
+            --muted: #9aa8c2;
+            --faint: #6b7a96;
+            --glass: rgba(255, 255, 255, 0.055);
+            --glass-strong: rgba(255, 255, 255, 0.09);
+            --stroke: rgba(255, 255, 255, 0.12);
+            --stroke-hi: rgba(255, 255, 255, 0.22);
+            --cyan: #2dd4ff;
+            --violet: #a78bfa;
+            --pink: #f472b6;
+            --green: #34d399;
+            --amber: #fbbf24;
+            --radius: 22px;
+            --radius-sm: 14px;
+            --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+            --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+        }
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+        body {
+            margin: 0;
+            font-family: "Inter", system-ui, -apple-system, Segoe UI, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+        a { color: var(--cyan); text-decoration: none; }
+        a:hover { color: #fff; }
+        img { max-width: 100%; display: block; }
+        h1, h2, h3 { line-height: 1.15; margin: 0; letter-spacing: -0.02em; }
+        p { margin: 0 0 1em; }
+
+        /* ── Ambient background: aurora blobs + grid ─────────────────── */
+        .aurora { position: fixed; inset: 0; z-index: -2; overflow: hidden; background: radial-gradient(1200px 800px at 80% -10%, #10183a 0%, transparent 60%), var(--bg); }
+        .aurora span { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.55; animation: drift 26s ease-in-out infinite alternate; }
+        .aurora span:nth-child(1) { width: 520px; height: 520px; background: #0ea5e9; top: -120px; left: -80px; }
+        .aurora span:nth-child(2) { width: 460px; height: 460px; background: #7c3aed; top: 30%; right: -120px; animation-duration: 32s; }
+        .aurora span:nth-child(3) { width: 380px; height: 380px; background: #db2777; bottom: -120px; left: 25%; opacity: 0.35; animation-duration: 38s; }
+        .grid-overlay { position: fixed; inset: 0; z-index: -1; pointer-events: none;
+            background-image: linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+            background-size: 56px 56px;
+            mask-image: radial-gradient(ellipse at 50% 30%, #000 30%, transparent 80%);
+            -webkit-mask-image: radial-gradient(ellipse at 50% 30%, #000 30%, transparent 80%); }
+        @keyframes drift { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(80px, 60px) scale(1.15); } }
+
+        /* ── Glass primitive ─────────────────────────────────────────── */
+        .glass {
+            background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.025));
+            border: 1px solid var(--stroke);
+            border-radius: var(--radius);
+            backdrop-filter: blur(18px) saturate(140%);
+            -webkit-backdrop-filter: blur(18px) saturate(140%);
+            box-shadow: var(--shadow), inset 0 1px 0 rgba(255,255,255,0.08);
+        }
+        .glass-hover { transition: transform .35s ease, border-color .35s ease, background .35s ease; }
+        .glass-hover:hover { transform: translateY(-4px); border-color: var(--stroke-hi); background: linear-gradient(145deg, rgba(255,255,255,0.11), rgba(255,255,255,0.035)); }
+
+        .container { width: min(1180px, 100% - 32px); margin: 0 auto; }
+        section { padding: 96px 0; position: relative; }
+        .eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--cyan); display: inline-flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+        .eyebrow::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 12px var(--cyan); }
+        .section-title { font-size: clamp(28px, 4vw, 44px); font-weight: 800; max-width: 760px; margin-bottom: 18px; }
+        .section-lead { color: var(--muted); max-width: 720px; font-size: 17px; }
+        .grad-text { background: linear-gradient(90deg, var(--cyan), var(--violet) 55%, var(--pink)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+        /* ── Nav ─────────────────────────────────────────────────────── */
+        .nav { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-index: 50; width: min(1180px, 100% - 32px);
+            display: flex; align-items: center; justify-content: space-between; padding: 10px 12px 10px 20px; border-radius: 999px; }
+        .brand { font-family: var(--mono); font-weight: 600; letter-spacing: .12em; color: var(--text); font-size: 14px; display: flex; align-items: center; gap: 10px; }
+        .brand-dot { width: 10px; height: 10px; border-radius: 50%; background: linear-gradient(135deg, var(--cyan), var(--violet)); box-shadow: 0 0 14px var(--cyan); }
+        .nav-links { display: flex; gap: 4px; list-style: none; margin: 0; padding: 0; }
+        .nav-links a { color: var(--muted); font-size: 14px; font-weight: 500; padding: 8px 14px; border-radius: 999px; transition: background .2s, color .2s; }
+        .nav-links a:hover, .nav-links a.active { color: #fff; background: rgba(255,255,255,0.08); }
+        .nav-cta { background: linear-gradient(135deg, rgba(45,212,255,.25), rgba(167,139,250,.25)) !important; color: #fff !important; border: 1px solid rgba(45,212,255,.35); }
+        .nav-toggle { display: none; background: none; border: 0; color: var(--text); font-size: 20px; padding: 6px 10px; cursor: pointer; }
+
+        /* ── Buttons ─────────────────────────────────────────────────── */
+        .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px; border-radius: 14px; font-weight: 600; font-size: 15px; transition: transform .2s, box-shadow .2s, background .2s; }
+        .btn-primary { color: #04111c; background: linear-gradient(135deg, var(--cyan), #7dd3fc 50%, var(--violet)); box-shadow: 0 10px 30px rgba(45,212,255,.25); }
+        .btn-primary:hover { color: #04111c; transform: translateY(-2px); box-shadow: 0 14px 40px rgba(45,212,255,.4); }
+        .btn-ghost { color: var(--text); background: rgba(255,255,255,0.06); border: 1px solid var(--stroke); }
+        .btn-ghost:hover { color: #fff; background: rgba(255,255,255,0.12); }
+
+        /* ── Hero ────────────────────────────────────────────────────── */
+        .hero { min-height: 100vh; display: flex; align-items: center; padding: 130px 0 70px; }
+        .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; }
+        .status-pill { display: inline-flex; align-items: center; gap: 10px; padding: 7px 14px; border-radius: 999px; font-family: var(--mono); font-size: 12px; color: var(--muted); margin-bottom: 26px; }
+        .live-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 0 rgba(52,211,153,.7); animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(52,211,153,.6); } 70% { box-shadow: 0 0 0 10px rgba(52,211,153,0); } 100% { box-shadow: 0 0 0 0 rgba(52,211,153,0); } }
+        .hero h1 { font-size: clamp(38px, 6vw, 68px); font-weight: 800; margin-bottom: 22px; }
+        .hero-kicker { font-family: var(--mono); color: var(--violet); font-size: 13px; letter-spacing: .08em; margin-bottom: 16px; }
+        .hero p.lead { color: var(--muted); font-size: 18px; max-width: 580px; margin-bottom: 32px; }
+        .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+        .console { padding: 22px; position: relative; }
+        .console-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+        .dots { display: flex; gap: 7px; }
+        .dots i { width: 11px; height: 11px; border-radius: 50%; display: block; }
+        .dots i:nth-child(1) { background: #ff5f57; } .dots i:nth-child(2) { background: #febc2e; } .dots i:nth-child(3) { background: #28c840; }
+        .console-title { font-family: var(--mono); font-size: 12px; color: var(--faint); }
+        .pipe { display: grid; gap: 10px; }
+        .pipe-row { display: grid; grid-template-columns: 38px 1fr auto; align-items: center; gap: 14px; padding: 12px 14px; border-radius: var(--radius-sm); background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); position: relative; overflow: hidden; }
+        .pipe-row::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(45,212,255,.12), transparent); transform: translateX(-100%); animation: sweep 4.5s ease-in-out infinite; }
+        .pipe-row:nth-child(2)::after { animation-delay: .6s; } .pipe-row:nth-child(3)::after { animation-delay: 1.2s; }
+        .pipe-row:nth-child(4)::after { animation-delay: 1.8s; } .pipe-row:nth-child(5)::after { animation-delay: 2.4s; }
+        @keyframes sweep { 0%, 60% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+        .pipe-icon { width: 38px; height: 38px; border-radius: 11px; display: grid; place-items: center; font-size: 16px; }
+        .pipe-row strong { display: block; font-size: 14px; }
+        .pipe-row small { color: var(--faint); font-size: 12px; }
+        .tag { font-family: var(--mono); font-size: 11px; padding: 4px 9px; border-radius: 999px; border: 1px solid; white-space: nowrap; }
+        .c-cyan { color: var(--cyan); background: rgba(45,212,255,.12); border-color: rgba(45,212,255,.3); }
+        .c-violet { color: var(--violet); background: rgba(167,139,250,.12); border-color: rgba(167,139,250,.3); }
+        .c-pink { color: var(--pink); background: rgba(244,114,182,.12); border-color: rgba(244,114,182,.3); }
+        .c-green { color: var(--green); background: rgba(52,211,153,.12); border-color: rgba(52,211,153,.3); }
+        .c-amber { color: var(--amber); background: rgba(251,191,36,.12); border-color: rgba(251,191,36,.3); }
+        .console-foot { display: flex; justify-content: space-between; margin-top: 16px; font-family: var(--mono); font-size: 11px; color: var(--faint); }
+
+        /* ── Stat tiles ──────────────────────────────────────────────── */
+        .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 56px; }
+        .stat { padding: 20px 22px; }
+        .stat b { display: block; font-size: 26px; font-weight: 800; letter-spacing: -0.02em; }
+        .stat span { color: var(--muted); font-size: 13px; }
+
+        /* ── About ───────────────────────────────────────────────────── */
+        .about-grid { display: grid; grid-template-columns: 340px 1fr; gap: 28px; align-items: stretch; }
+        .profile { padding: 14px; display: flex; flex-direction: column; }
+        .profile-img { border-radius: 16px; overflow: hidden; aspect-ratio: 4 / 5; position: relative; }
+        .profile-img img { width: 100%; height: 100%; object-fit: cover; }
+        .profile-img::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, rgba(7,11,20,.85)); }
+        .profile-meta { padding: 16px 8px 6px; }
+        .profile-meta h3 { font-size: 20px; margin-bottom: 4px; }
+        .profile-meta p { color: var(--muted); font-size: 14px; margin: 0; }
+        .profile-meta .loc { display: flex; align-items: center; gap: 8px; margin-top: 10px; font-family: var(--mono); font-size: 12px; color: var(--faint); }
+        .about-body { padding: 34px; }
+        .about-body p { color: var(--muted); font-size: 16px; }
+        .about-body p a { font-weight: 600; }
+        .badge-line { display: inline-flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 12px; font-size: 14px; font-weight: 600; margin-top: 6px; }
+
+        /* ── Quantala ────────────────────────────────────────────────── */
+        .q-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; margin-bottom: 40px; }
+        .arch { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+        .arch-card { padding: 24px; position: relative; overflow: hidden; }
+        .arch-card .num { position: absolute; top: 18px; right: 20px; font-family: var(--mono); font-size: 13px; color: var(--faint); }
+        .arch-card .ico { width: 46px; height: 46px; border-radius: 13px; display: grid; place-items: center; font-size: 19px; margin-bottom: 18px; }
+        .arch-card h3 { font-size: 18px; margin-bottom: 10px; }
+        .arch-card p { color: var(--muted); font-size: 14px; margin: 0; }
+        .arch-card::before { content: ""; position: absolute; left: 0; top: 0; height: 2px; width: 100%; background: var(--line, var(--cyan)); opacity: .8; }
+
+        .flow { margin-top: 22px; padding: 30px; }
+        .flow-top { display: grid; grid-template-columns: 1fr 1.6fr; gap: 28px; align-items: center; }
+        .flow h3 { font-size: 22px; margin: 6px 0 10px; }
+        .flow p { color: var(--muted); margin: 0; }
+        .stages { display: flex; align-items: stretch; gap: 0; }
+        .stage { flex: 1; text-align: center; padding: 16px 8px; border-radius: 14px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); }
+        .stage i { font-size: 18px; display: block; margin-bottom: 8px; }
+        .stage strong { display: block; font-size: 13px; }
+        .stage span { display: block; font-size: 11px; color: var(--faint); margin-top: 4px; line-height: 1.4; }
+        .stage-link { width: 26px; align-self: center; height: 2px; background: linear-gradient(90deg, rgba(45,212,255,.2), rgba(45,212,255,.8), rgba(45,212,255,.2)); background-size: 200% 100%; animation: flowline 2.2s linear infinite; flex: none; }
+        @keyframes flowline { from { background-position: 200% 0; } to { background-position: 0 0; } }
+
+        .layers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 22px; }
+        .layer { padding: 26px; }
+        .layer h3 { font-size: 18px; display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+        .layer h3 i { color: var(--cyan); }
+        .layer p { color: var(--muted); font-size: 14px; }
+        .layer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+        .layer li { font-size: 14px; color: var(--text); padding-left: 22px; position: relative; }
+        .layer li::before { content: "▸"; position: absolute; left: 0; color: var(--violet); }
+
+        .proof { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 22px; }
+        .proof div { padding: 20px 22px; }
+        .proof strong { display: block; font-family: var(--mono); font-size: 18px; color: var(--cyan); margin-bottom: 4px; }
+        .proof span { color: var(--muted); font-size: 13px; }
+
+        /* ── Experience timeline ─────────────────────────────────────── */
+        .timeline { position: relative; margin-top: 44px; display: grid; gap: 18px; }
+        .timeline::before { content: ""; position: absolute; left: 21px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(180deg, var(--cyan), var(--violet), var(--pink), transparent); opacity: .5; }
+        .t-item { display: grid; grid-template-columns: 44px 1fr; gap: 18px; }
+        .t-node { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; z-index: 1; font-size: 16px; color: var(--cyan); }
+        .t-card { padding: 22px 26px; }
+        .t-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 6px; }
+        .t-card h3 { font-size: 19px; }
+        .t-date { font-family: var(--mono); font-size: 12px; color: var(--faint); }
+        .t-role { color: var(--violet); font-weight: 600; font-size: 14px; margin-bottom: 8px; }
+        .t-card p { color: var(--muted); font-size: 14.5px; margin: 0; }
+        .t-current .t-node { color: var(--green); }
+        .edu { margin-top: 22px; padding: 22px 26px; display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: center; }
+        .edu i { font-size: 26px; color: var(--amber); }
+        .edu p { margin: 0; color: var(--muted); font-size: 14.5px; }
+        .edu strong { color: var(--text); }
+
+        /* ── Skills ──────────────────────────────────────────────────── */
+        .skills { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 40px; }
+        .skill { padding: 26px; }
+        .skill-head { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+        .skill-head .ico { width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; font-size: 18px; }
+        .skill h3 { font-size: 18px; }
+        .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+        .chip { font-size: 13px; padding: 6px 12px; border-radius: 999px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: var(--text); }
+
+        /* ── Projects ────────────────────────────────────────────────── */
+        .projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 40px; }
+        .project { display: flex; flex-direction: column; overflow: hidden; color: var(--text); }
+        .project:hover { color: var(--text); }
+        .project-media { aspect-ratio: 16 / 9; overflow: hidden; position: relative; background: rgba(255,255,255,0.04); }
+        .project-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+        .project:hover .project-media img { transform: scale(1.06); }
+        .project-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 50%, rgba(7,11,20,.6)); }
+        .eb-logo { width: 100%; height: 100%; display: grid; place-items: center; align-content: center; gap: 2px; background: radial-gradient(circle at 30% 30%, rgba(45,212,255,.25), transparent 60%), radial-gradient(circle at 70% 70%, rgba(167,139,250,.3), transparent 60%); }
+        .eb-logo .mark { width: 54px; height: 54px; border-radius: 16px; display: grid; place-items: center; font-weight: 800; background: linear-gradient(135deg, var(--cyan), var(--violet)); color: #04111c; margin-bottom: 8px; }
+        .eb-logo strong { font-size: 22px; letter-spacing: .02em; }
+        .eb-logo span { color: var(--muted); font-size: 13px; letter-spacing: .3em; text-transform: uppercase; }
+        .project-body { padding: 22px 24px 24px; flex: 1; display: flex; flex-direction: column; }
+        .project-body .tag { align-self: flex-start; margin-bottom: 12px; }
+        .project-body h3 { font-size: 19px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
+        .project-body h3 i { font-size: 14px; color: var(--faint); transition: transform .3s, color .3s; }
+        .project:hover h3 i { transform: translate(3px, -3px); color: var(--cyan); }
+        .project-body p { color: var(--muted); font-size: 14px; margin: 0; }
+        .project-featured { grid-column: span 2; }
+        .project-featured .project-media { aspect-ratio: 21 / 9; }
+        .q-preview { background: radial-gradient(circle at 20% 20%, rgba(45,212,255,.18), transparent 55%), radial-gradient(circle at 85% 80%, rgba(167,139,250,.22), transparent 55%), rgba(6,12,24,.6); }
+        .q-preview::after { display: none; }
+        .q-preview svg { position: absolute; inset: 18% 0 0 0; width: 100%; height: 82%; }
+        .q-preview .candles line { stroke: rgba(255,255,255,.35); stroke-width: 1.5; }
+        .q-preview .candles .up { fill: rgba(52,211,153,.85); }
+        .q-preview .candles .dn { fill: rgba(244,114,182,.85); }
+        .q-chips { position: absolute; left: 18px; right: 18px; top: 16px; display: flex; flex-wrap: wrap; gap: 6px; }
+        .q-chips span { font-family: var(--mono); font-size: 11px; padding: 4px 9px; border-radius: 999px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.14); color: var(--text); backdrop-filter: blur(6px); }
+        .q-badge { position: absolute; right: 16px; bottom: 14px; display: flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 11px; color: var(--muted); padding: 6px 10px; border-radius: 999px; background: rgba(7,11,20,.6); border: 1px solid rgba(255,255,255,.12); }
+
+        /* ── Contact ─────────────────────────────────────────────────── */
+        .contact { padding: 56px 40px; text-align: center; position: relative; overflow: hidden; }
+        .contact::before { content: ""; position: absolute; width: 420px; height: 420px; border-radius: 50%; background: radial-gradient(circle, rgba(45,212,255,.18), transparent 70%); top: -200px; left: 50%; transform: translateX(-50%); }
+        .contact .section-title { margin: 0 auto 14px; }
+        .contact .section-lead { margin: 0 auto 32px; }
+        .contact-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; position: relative; }
+        .contact-link { display: inline-flex; align-items: center; gap: 12px; padding: 14px 22px; border-radius: 16px; color: var(--text); font-weight: 600; }
+        .contact-link i { font-size: 20px; }
+        .contact-link:hover { color: #fff; }
+
+        footer { padding: 30px 0 46px; text-align: center; color: var(--faint); font-size: 14px; }
+        footer a { color: var(--muted); }
+
+        /* ── Reveal on scroll ────────────────────────────────────────── */
+        .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
+        .reveal.in { opacity: 1; transform: none; }
+
+        /* ── Responsive ──────────────────────────────────────────────── */
+        @media (max-width: 1000px) {
+            .hero-grid, .about-grid, .flow-top { grid-template-columns: 1fr; }
+            .arch, .proof, .stats { grid-template-columns: repeat(2, 1fr); }
+            .layers, .projects { grid-template-columns: repeat(2, 1fr); }
+            .project-featured { grid-column: span 2; }
+            .about-grid { max-width: 640px; }
+            .profile { flex-direction: row; gap: 18px; align-items: center; }
+            .profile-img { width: 160px; flex: none; }
+        }
+        @media (max-width: 860px) {
+            .nav { border-radius: 22px; flex-wrap: wrap; }
+            .nav-toggle { display: block; }
+            .nav-links { display: none; width: 100%; flex-direction: column; padding: 10px 0 4px; }
+            .nav.open .nav-links { display: flex; }
+            .stages { flex-direction: column; }
+            .stage-link { width: 2px; height: 18px; align-self: center; }
+        }
+        @media (max-width: 640px) {
+            section { padding: 72px 0; }
+            .arch, .proof, .layers, .projects, .skills, .stats { grid-template-columns: 1fr; }
+            .project-featured { grid-column: auto; }
+            .project-featured .project-media { aspect-ratio: 16 / 9; }
+            .profile { flex-direction: column; }
+            .profile-img { width: 100%; }
+            .about-body, .flow, .contact { padding: 24px; }
+            .console { padding: 16px; }
+            .pipe-row { grid-template-columns: 34px 1fr; }
+            .pipe-row .tag { display: none; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation: none !important; transition: none !important; }
+            .reveal { opacity: 1; transform: none; }
+        }
+    </style>
 </head>
 
-<body id="page-top">
+<body>
+    <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+    <div class="grid-overlay" aria-hidden="true"></div>
 
-    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand page-scroll" href="#page-top">SHASHIDHAR REDDY</a>
-            </div>
-
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a class="page-scroll" href="#about">About</a></li>
-                    <li><a class="page-scroll" href="#quantala">Quantala</a></li>
-                    <li><a class="page-scroll" href="#experience">Experience</a></li>
-                    <li><a class="page-scroll" href="#skills">Skills</a></li>
-                    <li><a class="page-scroll" href="#projects">Projects</a></li>
-                    <li><a href="resume/Shashi_resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a></li>
-                    <li><a class="page-scroll" href="#contact">Contact</a></li>
-                </ul>
-            </div>
-        </div>
+    <!-- ── Nav ── -->
+    <nav class="nav glass" id="nav">
+        <a class="brand" href="#top"><span class="brand-dot"></span>SHASHIDHAR REDDY</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#quantala">Quantala</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="resume/Shashi_resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a></li>
+            <li><a class="nav-cta" href="#contact">Contact</a></li>
+        </ul>
     </nav>
 
-    <header class="quant-hero">
-        <div class="header-content">
-            <div class="header-content-inner">
-                <p class="hero-kicker">Quant Development · Market Data Engineering · AI Systems</p>
-                <h1>Engineering the data behind systematic trading.</h1>
-                <hr>
-                <p>
-                    I’m Shashidhar Reddy, a senior data engineer with 10+ years of experience.
-                    I build real-time pipelines, research-ready market datasets, and Python trading
-                    workflows. My current focus is Quantala, my quantitative trading and research platform.
-                </p>
-                <div class="hero-actions">
-                    <p><a href="https://quantala.io/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-xl">Visit Quantala &amp; Explore Dashboards <span aria-hidden="true">↗</span></a></p> 
+    <!-- ── Hero ── -->
+    <header class="hero" id="top">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="reveal">
+                    <div class="status-pill glass"><span class="live-dot"></span>Open to quant dev &amp; market data roles · EMEA</div>
+                    <p class="hero-kicker">Quant Development · Market Data Engineering · AI Systems</p>
+                    <h1>Engineering the data behind <span class="grad-text">systematic trading.</span></h1>
+                    <p class="lead">
+                        I’m Shashidhar Reddy, a senior data engineer with 10+ years of experience.
+                        I build real-time pipelines, research-ready market datasets, and Python trading
+                        workflows. My current focus is Quantala, my quantitative trading and research platform.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="https://quantala.io/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Visit Quantala &amp; Explore Dashboards <i class="fa fa-external-link"></i></a>
+                        <a href="resume/Shashi_resume.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-ghost"><i class="fa fa-file-text-o"></i> Resume</a>
+                    </div>
                 </div>
+
+                <div class="console glass reveal" aria-label="Quantala pipeline overview">
+                    <div class="console-head">
+                        <div class="dots"><i></i><i></i><i></i></div>
+                        <span class="console-title">quantala://pipeline</span>
+                    </div>
+                    <div class="pipe">
+                        <div class="pipe-row">
+                            <div class="pipe-icon c-cyan"><i class="fa fa-wifi"></i></div>
+                            <div><strong>WebSockets</strong><small>Ticks, order flow, options, F&amp;O</small></div>
+                            <span class="tag c-cyan">live</span>
+                        </div>
+                        <div class="pipe-row">
+                            <div class="pipe-icon c-violet"><i class="fa fa-random"></i></div>
+                            <div><strong>Redpanda</strong><small>Kafka-compatible event streaming</small></div>
+                            <span class="tag c-violet">stream</span>
+                        </div>
+                        <div class="pipe-row">
+                            <div class="pipe-icon c-amber"><i class="fa fa-database"></i></div>
+                            <div><strong>ClickHouse</strong><small>30s / 1m / 5m rollups, footprint, replay</small></div>
+                            <span class="tag c-amber">storage</span>
+                        </div>
+                        <div class="pipe-row">
+                            <div class="pipe-icon c-pink"><i class="fa fa-magic"></i></div>
+                            <div><strong>AI Evaluation</strong><small>LLM scoring → TAKE · SKIP · WAIT</small></div>
+                            <span class="tag c-pink">LLM JSON</span>
+                        </div>
+                        <div class="pipe-row">
+                            <div class="pipe-icon c-green"><i class="fa fa-paper-plane"></i></div>
+                            <div><strong>Execution</strong><small>Risk checks, dry-run logs, broker routing</small></div>
+                            <span class="tag c-green">orders</span>
+                        </div>
+                    </div>
+                    <div class="console-foot"><span>NIFTY · BANKNIFTY · SENSEX · CRUDEOIL</span><span>quantala.io</span></div>
+                </div>
+            </div>
+
+            <div class="stats">
+                <div class="stat glass glass-hover reveal"><b class="grad-text">10+ yrs</b><span>Data Engineering</span></div>
+                <div class="stat glass glass-hover reveal"><b>IIQF</b><span>Algorithmic Trading · 2023–2024</span></div>
+                <div class="stat glass glass-hover reveal"><b>5m + 1m</b><span>Footprint signal workflow</span></div>
+                <div class="stat glass glass-hover reveal"><b>LLM</b><span>Signal scoring</span></div>
             </div>
         </div>
     </header>
 
-    <section id="about" class="about-quant">
+    <!-- ── About ── -->
+    <section id="about">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-5 text-center">
-                    <img src="img/DP.jpg" class="img-responsive profile-photo" alt="Shashidhar Reddy">
+            <div class="about-grid">
+                <div class="profile glass reveal">
+                    <div class="profile-img"><img src="img/DP.jpg" alt="Shashidhar Reddy"></div>
+                    <div class="profile-meta">
+                        <h3>Shashidhar Reddy</h3>
+                        <p>Senior Data Engineer · Quant Developer</p>
+                        <div class="loc"><i class="fa fa-map-marker"></i> Johannesburg, South Africa</div>
+                    </div>
                 </div>
-                <div class="col-lg-7 col-lg-offset-1 col-md-7">
-                    <p class="section-eyebrow">About</p>
-                    <h2 class="section-heading">Production data experience. A focus on financial markets.</h2>
-                    <hr class="primary">
+                <div class="about-body glass reveal">
+                    <p class="eyebrow">About</p>
+                    <h2 class="section-title">Production data experience. A focus on financial markets.</h2>
                     <p>
                         Based in Johannesburg, South Africa, I bring experience across financial services,
                         market data, and cloud data platforms. My core stack is Python, SQL, Spark, AWS,
@@ -98,368 +421,347 @@
                         analysis and information retrieval. Alongside that work, I’m building
                         <a href="https://quantala.io/" target="_blank" rel="noopener noreferrer">Quantala</a>.
                     </p>
-                    <p><strong>South Africa work authorization · Open to relocation across EMEA</strong></p>
-                    <div class="metric-strip">
-                        <div>
-                            <span>10+ years</span>
-                            <strong>Data Engineering</strong>
-                        </div>
-                        <div>
-                            <span>IIQF · 2023–2024</span>
-                            <strong>Algorithmic Trading</strong>
-                        </div>
-                        <div>
-                            <span>LLM</span>
-                            <strong>Signal Scoring</strong>
-                        </div>
-                    </div>
+                    <span class="badge-line c-green"><i class="fa fa-check-circle"></i> South Africa work authorization · Open to relocation across EMEA</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="quantala" class="quantstream-section">
+    <!-- ── Quantala ── -->
+    <section id="quantala">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-10 col-lg-offset-1 text-center">
-                    <p class="section-eyebrow">Current Focus · Founder / Builder · In Progress</p>
-                    <h2 class="section-heading">Quantala — Quantitative Trading &amp; Research</h2>
-                    <hr class="primary">
-                    <p class="lead">
+            <div class="q-head reveal">
+                <div>
+                    <p class="eyebrow">Current Focus · Founder / Builder · In Progress</p>
+                    <h2 class="section-title">Quantala — <span class="grad-text">Quantitative Trading &amp; Research</span></h2>
+                    <p class="section-lead">
                         I’m building an end-to-end platform connecting real-time market data,
                         order-flow analytics, systematic strategy research, backtesting, and execution
                         workflows. My focus is the engineering foundation: usable data, testable signals,
                         and observable trading systems.
                     </p>
-                    <p><a href="https://quantala.io/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-xl">Visit Quantala &amp; Explore Dashboards <span aria-hidden="true">↗</span></a></p>
+                </div>
+                <a href="https://quantala.io/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Explore Dashboards <i class="fa fa-external-link"></i></a>
+            </div>
+
+            <div class="arch">
+                <div class="arch-card glass glass-hover reveal" style="--line: var(--cyan)">
+                    <span class="num">01</span>
+                    <div class="ico c-cyan"><i class="fa fa-bolt"></i></div>
+                    <h3>WebSocket Layer</h3>
+                    <p>Broker APIs and order-flow data providers for ticks, futures, order flow, OI, IV, bid/ask, and footprint data.</p>
+                </div>
+                <div class="arch-card glass glass-hover reveal" style="--line: var(--violet)">
+                    <span class="num">02</span>
+                    <div class="ico c-violet"><i class="fa fa-random"></i></div>
+                    <h3>Streaming Layer</h3>
+                    <p>Redpanda/Kafka-compatible ingestion with compact analytics payloads, compression, and source-specific topics.</p>
+                </div>
+                <div class="arch-card glass glass-hover reveal" style="--line: var(--amber)">
+                    <span class="num">03</span>
+                    <div class="ico c-amber"><i class="fa fa-database"></i></div>
+                    <h3>Storage Layer</h3>
+                    <p>ClickHouse raw tables, materialized views, 30s/1m/5m rollups, footprint levels, retention, and replay queries.</p>
+                </div>
+                <div class="arch-card glass glass-hover reveal" style="--line: var(--pink)">
+                    <span class="num">04</span>
+                    <div class="ico c-pink"><i class="fa fa-cogs"></i></div>
+                    <h3>Feature Layer</h3>
+                    <p>Deterministic features: cumulative delta, stacked imbalance, absorption, VWAP, SuperTrend, RSI, IV, and OI context.</p>
                 </div>
             </div>
 
-            <div class="row architecture-row">
-                <div class="col-md-3 col-sm-6">
-                    <div class="arch-card accent-market">
-                        <i class="fa fa-bolt"></i>
-                        <span>01</span>
-                        <h3>WebSocket Layer</h3>
-                        <p>Broker APIs and order-flow data providers for ticks, futures, order flow, OI, IV, bid/ask, and footprint data.</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="arch-card accent-stream">
-                        <i class="fa fa-random"></i>
-                        <span>02</span>
-                        <h3>Streaming Layer</h3>
-                        <p>Redpanda/Kafka-compatible ingestion with compact analytics payloads, compression, and source-specific topics.</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="arch-card accent-storage">
-                        <i class="fa fa-database"></i>
-                        <span>03</span>
-                        <h3>Storage Layer</h3>
-                        <p>ClickHouse raw tables, materialized views, 30s/1m/5m rollups, footprint levels, retention, and replay queries.</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="arch-card accent-ai">
-                        <i class="fa fa-cogs"></i>
-                        <span>04</span>
-                        <h3>Feature Layer</h3>
-                        <p>Deterministic features: cumulative delta, stacked imbalance, absorption, VWAP, SuperTrend, RSI, IV, and OI context.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="strategy-foundation">
-                <div class="foundation-copy">
-                    <span class="project-label">Reusable Quant Architecture</span>
-                    <h3>Foundation layer for any strategy</h3>
-                    <p>
-                        The platform architecture connects each stage: capture market events,
-                        store replayable data, filter deterministic signals, evaluate quality with AI,
-                        and route approved setups through risk-aware execution.
-                    </p>
-                </div>
-
-                <div class="foundation-diagram" aria-label="Quant strategy foundation diagram">
-                    <div class="foundation-stage stage-websocket">
-                        <i class="fa fa-wifi"></i>
-                        <strong>WebSockets</strong>
-                        <span>Ticks, order flow, options, F&O</span>
-                        <div class="stage-tags">
-                            <em>live</em>
-                            <em>stream</em>
-                        </div>
-                    </div>
-                    <div class="foundation-connector"></div>
-                    <div class="foundation-stage stage-storage">
-                        <i class="fa fa-database"></i>
-                        <strong>Storage Layer</strong>
-                        <span>Redpanda, ClickHouse, rollups, replay</span>
-                        <div class="stage-tags">
-                            <em>raw</em>
-                            <em>candles</em>
-                        </div>
-                    </div>
-                    <div class="foundation-connector"></div>
-                    <div class="foundation-stage stage-analyze">
-                        <i class="fa fa-filter"></i>
-                        <strong>Analyze Layer</strong>
-                        <span>Feature engineering, filters, signal rules</span>
-                        <div class="stage-tags">
-                            <em>delta</em>
-                            <em>VWAP</em>
-                        </div>
-                    </div>
-                    <div class="foundation-connector"></div>
-                    <div class="foundation-stage stage-ai">
-                        <i class="fa fa-cogs"></i>
-                        <strong>AI Layer</strong>
-                        <span>Evaluation, scoring, confidence, reasoning</span>
-                        <div class="stage-tags">
-                            <em>LLM</em>
-                            <em>JSON</em>
-                        </div>
-                    </div>
-                    <div class="foundation-connector"></div>
-                    <div class="foundation-stage stage-execute">
-                        <i class="fa fa-paper-plane"></i>
-                        <strong>Execute Layer</strong>
-                        <span>Risk checks, dry-run logs, broker routing</span>
-                        <div class="stage-tags">
-                            <em>risk</em>
-                            <em>orders</em>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row layer-grid">
-                <div class="col-md-4">
-                    <div class="detail-card">
-                        <h3><i class="fa fa-line-chart"></i> Strategy Layer</h3>
+            <div class="flow glass reveal">
+                <div class="flow-top">
+                    <div>
+                        <span class="tag c-violet">Reusable Quant Architecture</span>
+                        <h3>Foundation layer for any strategy</h3>
                         <p>
-                            Deterministic candidate generation from 5-minute footprint candles and
-                            1-minute confirmation closes. Strategies stay explainable and testable.
+                            The platform architecture connects each stage: capture market events,
+                            store replayable data, filter deterministic signals, evaluate quality with AI,
+                            and route approved setups through risk-aware execution.
                         </p>
-                        <ul>
-                            <li>Order-flow imbalance detection</li>
-                            <li>Opening Range Breakout research</li>
-                            <li>Volume shocker scans and stock F&O backtests</li>
-                        </ul>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="detail-card">
-                        <h3><i class="fa fa-magic"></i> AI Evaluation Layer</h3>
-                        <p>
-                            The evaluation layer consumes
-                            engineered features and returns structured JSON for storage and analysis.
-                        </p>
-                        <ul>
-                            <li>Claude-assisted signal evaluation</li>
-                            <li>Ollama/open-source model benchmarks</li>
-                            <li>Prompt compression, JSON validation, token and latency logging</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="detail-card">
-                        <h3><i class="fa fa-shield"></i> Risk + Execution Layer</h3>
-                        <p>
-                            Execution workflows are separated from strategy logic, with risk checks,
-                            trade logging, and outcome tracking for research and evaluation.
-                        </p>
-                        <ul>
-                            <li>Broker execution integration</li>
-                            <li>Trade setup rows and outcome tracker</li>
-                            <li>Replay-ready logs for win-rate, drawdown, and expectancy analysis</li>
-                        </ul>
+                    <div class="stages" aria-label="Quant strategy foundation diagram">
+                        <div class="stage"><i class="fa fa-wifi" style="color: var(--cyan)"></i><strong>WebSockets</strong><span>Ticks, order flow, options, F&amp;O</span></div>
+                        <div class="stage-link"></div>
+                        <div class="stage"><i class="fa fa-database" style="color: var(--amber)"></i><strong>Storage</strong><span>Redpanda, ClickHouse, rollups, replay</span></div>
+                        <div class="stage-link"></div>
+                        <div class="stage"><i class="fa fa-filter" style="color: var(--violet)"></i><strong>Analyze</strong><span>Features, filters, signal rules</span></div>
+                        <div class="stage-link"></div>
+                        <div class="stage"><i class="fa fa-cogs" style="color: var(--pink)"></i><strong>AI</strong><span>Scoring, confidence, reasoning</span></div>
+                        <div class="stage-link"></div>
+                        <div class="stage"><i class="fa fa-paper-plane" style="color: var(--green)"></i><strong>Execute</strong><span>Risk checks, dry-run, broker routing</span></div>
                     </div>
                 </div>
             </div>
 
-            <div class="row quant-proof">
-                <div class="col-sm-3">
-                    <strong>5m + 1m</strong>
-                    <span>Footprint signal and confirmation workflow</span>
+            <div class="layers">
+                <div class="layer glass glass-hover reveal">
+                    <h3><i class="fa fa-line-chart"></i> Strategy Layer</h3>
+                    <p>Deterministic candidate generation from 5-minute footprint candles and 1-minute confirmation closes. Strategies stay explainable and testable.</p>
+                    <ul>
+                        <li>Order-flow imbalance detection</li>
+                        <li>Opening Range Breakout research</li>
+                        <li>Volume shocker scans and stock F&amp;O backtests</li>
+                    </ul>
                 </div>
-                <div class="col-sm-3">
-                    <strong>Redpanda</strong>
-                    <span>Kafka-compatible event streaming</span>
+                <div class="layer glass glass-hover reveal">
+                    <h3><i class="fa fa-magic"></i> AI Evaluation Layer</h3>
+                    <p>The evaluation layer consumes engineered features and returns structured JSON for storage and analysis.</p>
+                    <ul>
+                        <li>Claude-assisted signal evaluation</li>
+                        <li>Ollama/open-source model benchmarks</li>
+                        <li>Prompt compression, JSON validation, token and latency logging</li>
+                    </ul>
                 </div>
-                <div class="col-sm-3">
-                    <strong>ClickHouse</strong>
-                    <span>Fast rollups, replay, and AI score storage</span>
+                <div class="layer glass glass-hover reveal">
+                    <h3><i class="fa fa-shield"></i> Risk + Execution Layer</h3>
+                    <p>Execution workflows are separated from strategy logic, with risk checks, trade logging, and outcome tracking for research and evaluation.</p>
+                    <ul>
+                        <li>Broker execution integration</li>
+                        <li>Trade setup rows and outcome tracker</li>
+                        <li>Replay-ready logs for win-rate, drawdown, and expectancy analysis</li>
+                    </ul>
                 </div>
-                <div class="col-sm-3">
-                    <strong>LLM JSON</strong>
-                    <span>Explainable TAKE, SKIP, WAIT decisions</span>
-                </div>
+            </div>
+
+            <div class="proof">
+                <div class="glass reveal"><strong>5m + 1m</strong><span>Footprint signal and confirmation workflow</span></div>
+                <div class="glass reveal"><strong>Redpanda</strong><span>Kafka-compatible event streaming</span></div>
+                <div class="glass reveal"><strong>ClickHouse</strong><span>Fast rollups, replay, and AI score storage</span></div>
+                <div class="glass reveal"><strong>LLM JSON</strong><span>Explainable TAKE, SKIP, WAIT decisions</span></div>
             </div>
         </div>
     </section>
 
-    <section id="experience" class="experience-section"><div class="container">
-        <p class="section-eyebrow">Professional Experience</p>
-        <h2 class="section-heading">From production data platforms to market data and AI.</h2>
-        <div class="experience-grid">
-            <article class="experience-card"><p class="section-eyebrow">Aug 2025 – Present</p><h3>Enable Benefits</h3><p><strong>Senior Data Engineer (AI) · Contract</strong></p><p>Building AI-ready platforms with Python, Spark, SQL, and AWS. Integrating Llama 3 for document analysis, extraction, summarization, and retrieval across PDFs, APIs, and OCR content.</p></article>
-            <article class="experience-card"><p class="section-eyebrow">Nov 2024 – May 2025</p><h3>SVSS Trading</h3><p><strong>Market Data Engineer · Remote Contract / Freelance</strong></p><p>Developed a market-data pipeline proof of concept for equities, futures, and derivatives. Normalized API and WebSocket data, built strategy and backtesting workflows with transaction costs and slippage, and produced P&amp;L and risk analytics.</p></article>
-            <article class="experience-card"><p class="section-eyebrow">Mar 2023 – Oct 2024</p><h3>Old Mutual SA</h3><p><strong>Data Engineer · Contract</strong></p><p>Built production pipelines supporting the Two-Pot retirement system using Spark, Python, and SQL, with CI/CD, monitoring, and failure notifications.</p></article>
-            <article class="experience-card"><p class="section-eyebrow">Oct 2020 – Feb 2023</p><h3>JUMO</h3><p><strong>Senior Data Engineer</strong></p><p>Built and operated financial data pipelines with Spark, AWS, Delta Lake, and Airflow. Designed resilient ETL workflows and data models, with responsibility across deployment and operational support.</p></article>
-            <article class="experience-card"><p class="section-eyebrow">Mar 2019 – May 2020</p><h3>SVSS Trading</h3><p><strong>Data Engineer</strong></p><p>Automated Indian equity and derivatives market-data and option-chain collection. Built backtesting frameworks and research datasets with Python, Pandas, PostgreSQL, and AWS.</p></article>
-            <article class="experience-card"><p class="section-eyebrow">Jan 2015 – Jan 2019</p><h3>Sonata Software</h3><p><strong>Big Data Engineer</strong></p><p>Built Hadoop and Spark data platforms for airline and travel clients, including TUI and British Airways, using Scala, Hive, and Spark SQL.</p></article>
-        </div>
-        <div class="education-note"><strong>Education</strong><p>Post Graduate Program in Algorithmic Trading, IIQF · 2023–2024<br>B.Tech in Aeronautical Engineering, JNTU Hyderabad · 2007–2011</p></div>
-    </div></section>
-
-    <section id="skills" class="skills-section">
+    <!-- ── Experience ── -->
+    <section id="experience">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <p class="section-eyebrow">Skill Set</p>
-                    <h2 class="section-heading">A stack spanning market data, research, and production.</h2>
-                    <hr class="primary">
+            <div class="reveal">
+                <p class="eyebrow">Professional Experience</p>
+                <h2 class="section-title">From production data platforms to market data and AI.</h2>
+            </div>
+            <div class="timeline">
+                <div class="t-item t-current reveal">
+                    <div class="t-node glass"><i class="fa fa-circle"></i></div>
+                    <article class="t-card glass glass-hover">
+                        <div class="t-top"><h3>Enable Benefits</h3><span class="t-date">Aug 2025 – Present</span></div>
+                        <p class="t-role">Senior Data Engineer (AI) · Contract</p>
+                        <p>Building AI-ready platforms with Python, Spark, SQL, and AWS. Integrating Llama 3 for document analysis, extraction, summarization, and retrieval across PDFs, APIs, and OCR content.</p>
+                    </article>
+                </div>
+                <div class="t-item reveal">
+                    <div class="t-node glass"><i class="fa fa-line-chart"></i></div>
+                    <article class="t-card glass glass-hover">
+                        <div class="t-top"><h3>SVSS Trading</h3><span class="t-date">Nov 2024 – May 2025</span></div>
+                        <p class="t-role">Market Data Engineer · Remote Contract / Freelance</p>
+                        <p>Developed a market-data pipeline proof of concept for equities, futures, and derivatives. Normalized API and WebSocket data, built strategy and backtesting workflows with transaction costs and slippage, and produced P&amp;L and risk analytics.</p>
+                    </article>
+                </div>
+                <div class="t-item reveal">
+                    <div class="t-node glass"><i class="fa fa-university"></i></div>
+                    <article class="t-card glass glass-hover">
+                        <div class="t-top"><h3>Old Mutual SA</h3><span class="t-date">Mar 2023 – Oct 2024</span></div>
+                        <p class="t-role">Data Engineer · Contract</p>
+                        <p>Built production pipelines supporting the Two-Pot retirement system using Spark, Python, and SQL, with CI/CD, monitoring, and failure notifications.</p>
+                    </article>
+                </div>
+                <div class="t-item reveal">
+                    <div class="t-node glass"><i class="fa fa-mobile"></i></div>
+                    <article class="t-card glass glass-hover">
+                        <div class="t-top"><h3>JUMO</h3><span class="t-date">Oct 2020 – Feb 2023</span></div>
+                        <p class="t-role">Senior Data Engineer</p>
+                        <p>Built and operated financial data pipelines with Spark, AWS, Delta Lake, and Airflow. Designed resilient ETL workflows and data models, with responsibility across deployment and operational support.</p>
+                    </article>
+                </div>
+                <div class="t-item reveal">
+                    <div class="t-node glass"><i class="fa fa-bar-chart"></i></div>
+                    <article class="t-card glass glass-hover">
+                        <div class="t-top"><h3>SVSS Trading</h3><span class="t-date">Mar 2019 – May 2020</span></div>
+                        <p class="t-role">Data Engineer</p>
+                        <p>Automated Indian equity and derivatives market-data and option-chain collection. Built backtesting frameworks and research datasets with Python, Pandas, PostgreSQL, and AWS.</p>
+                    </article>
+                </div>
+                <div class="t-item reveal">
+                    <div class="t-node glass"><i class="fa fa-plane"></i></div>
+                    <article class="t-card glass glass-hover">
+                        <div class="t-top"><h3>Sonata Software</h3><span class="t-date">Jan 2015 – Jan 2019</span></div>
+                        <p class="t-role">Big Data Engineer</p>
+                        <p>Built Hadoop and Spark data platforms for airline and travel clients, including TUI and British Airways, using Scala, Hive, and Spark SQL.</p>
+                    </article>
                 </div>
             </div>
-            <div class="row skills-grid">
-                <div class="col-md-3 col-sm-6">
-                    <div class="skill-card">
-                        <h3>Quant Finance</h3>
-                        <p>Equities, futures, derivatives, market microstructure, order-flow research, systematic strategies, backtesting, P&amp;L and exposure analytics.</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="skill-card">
-                        <h3>Data Engineering</h3>
-                        <p>Python, SQL, Pandas, NumPy, Polars, Spark Structured Streaming, WebSockets, ClickHouse, QuestDB, PostgreSQL, Kafka / streaming concepts.</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="skill-card">
-                        <h3>AI + LLMs</h3>
-                        <p>Llama 3 integration, AI inference, document analysis and extraction, OCR ingestion, information retrieval, and structured LLM evaluation workflows.</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="skill-card">
-                        <h3>Cloud + Reliability</h3>
-                        <p>AWS (S3, EC2, EMR, Redshift, Athena, Lambda, SNS/SQS), Airflow, Delta Lake, Terraform, Docker, CI/CD, Grafana, and Datadog.</p>
-                    </div>
-                </div>
+            <div class="edu glass reveal">
+                <i class="fa fa-graduation-cap"></i>
+                <p><strong>Education</strong><br>Post Graduate Program in Algorithmic Trading, IIQF · 2023–2024<br>B.Tech in Aeronautical Engineering, JNTU Hyderabad · 2007–2011</p>
             </div>
         </div>
     </section>
 
-    <section id="projects" class="projects-section">
+    <!-- ── Skills ── -->
+    <section id="skills">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <p class="section-eyebrow">Project Portfolio</p>
-                    <h2 class="section-heading">Data platforms, fintech systems, and quant research.</h2>
-                    <hr class="primary">
-                </div>
+            <div class="reveal">
+                <p class="eyebrow">Skill Set</p>
+                <h2 class="section-title">A stack spanning market data, research, and production.</h2>
             </div>
-
-            <div class="row project-grid">
-                <div class="col-md-4 col-sm-6">
-                    <a href="https://quantala.io/" target="_blank" rel="noopener noreferrer" class="project-tile">
-                        <img src="img/SVSS.png" class="img-responsive" alt="Quantala">
-                        <div class="project-tile-body">
-                            <span>Quant Finance</span>
-                            <h3>Quantala</h3>
-                            <p>Streaming market data, order-flow strategies, ClickHouse features, and AI-assisted signal scoring.</p>
-                        </div>
-                    </a>
+            <div class="skills">
+                <div class="skill glass glass-hover reveal">
+                    <div class="skill-head"><div class="ico c-cyan"><i class="fa fa-line-chart"></i></div><h3>Quant Finance</h3></div>
+                    <div class="chips">
+                        <span class="chip">Equities</span><span class="chip">Futures</span><span class="chip">Derivatives</span>
+                        <span class="chip">Market microstructure</span><span class="chip">Order-flow research</span>
+                        <span class="chip">Systematic strategies</span><span class="chip">Backtesting</span><span class="chip">P&amp;L &amp; exposure analytics</span>
+                    </div>
                 </div>
-                <div class="col-md-4 col-sm-6">
-                    <a href="enbl.html" class="project-tile">
-                        <div class="project-logo-panel project-logo-panel-small enable-benefits-logo">
-                            <div class="maple-mark">EB</div>
-                            <strong>enable</strong>
-                            <span>benefits</span>
-                        </div>
-                        <div class="project-tile-body">
-                            <span>Fintech Data Specialist</span>
-                            <h3>Enable Benefits</h3>
-                            <p>AI-ready data platforms, Llama 3 document analysis, multi-format ingestion, and research workflows for a Canadian benefits company.</p>
-                        </div>
-                    </a>
+                <div class="skill glass glass-hover reveal">
+                    <div class="skill-head"><div class="ico c-amber"><i class="fa fa-database"></i></div><h3>Data Engineering</h3></div>
+                    <div class="chips">
+                        <span class="chip">Python</span><span class="chip">SQL</span><span class="chip">Pandas</span><span class="chip">NumPy</span><span class="chip">Polars</span>
+                        <span class="chip">Spark Structured Streaming</span><span class="chip">WebSockets</span><span class="chip">ClickHouse</span>
+                        <span class="chip">QuestDB</span><span class="chip">PostgreSQL</span><span class="chip">Kafka / streaming</span>
+                    </div>
                 </div>
-                <div class="col-md-4 col-sm-6">
-                    <a href="tuiproject.html" class="project-tile">
-                        <img src="img/TUI.jpg" class="img-responsive" alt="TUI Group">
-                        <div class="project-tile-body">
-                            <span>Data Analytics</span>
-                            <h3>TUI Group UK</h3>
-                            <p>Big data engineering and analytics for one of the world's leading travel companies.</p>
-                        </div>
-                    </a>
+                <div class="skill glass glass-hover reveal">
+                    <div class="skill-head"><div class="ico c-pink"><i class="fa fa-magic"></i></div><h3>AI + LLMs</h3></div>
+                    <div class="chips">
+                        <span class="chip">Llama 3 integration</span><span class="chip">AI inference</span><span class="chip">Document analysis &amp; extraction</span>
+                        <span class="chip">OCR ingestion</span><span class="chip">Information retrieval</span><span class="chip">Structured LLM evaluation</span>
+                    </div>
                 </div>
-                <div class="col-md-4 col-sm-6">
-                    <a href="jumoproject.html" class="project-tile">
-                        <img src="img/jumo.jpg" class="img-responsive" alt="JUMO">
-                        <div class="project-tile-body">
-                            <span>Data Systems</span>
-                            <h3>JUMO</h3>
-                            <p>Senior data engineering for mobile financial services, lending, savings, and EDW workflows.</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <a href="OMSA2.html" class="project-tile">
-                        <img src="img/OldMutual.jpg" class="img-responsive" alt="Old Mutual South Africa">
-                        <div class="project-tile-body">
-                            <span>AWS Data Engineering</span>
-                            <h3>Old Mutual SA</h3>
-                            <p>Cloud data pipelines, production data movement, and analytics engineering.</p>
-                        </div>
-                    </a>
+                <div class="skill glass glass-hover reveal">
+                    <div class="skill-head"><div class="ico c-violet"><i class="fa fa-cloud"></i></div><h3>Cloud + Reliability</h3></div>
+                    <div class="chips">
+                        <span class="chip">AWS S3 · EC2 · EMR</span><span class="chip">Redshift · Athena</span><span class="chip">Lambda · SNS/SQS</span>
+                        <span class="chip">Airflow</span><span class="chip">Delta Lake</span><span class="chip">Terraform</span><span class="chip">Docker</span>
+                        <span class="chip">CI/CD</span><span class="chip">Grafana</span><span class="chip">Datadog</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="contact-section">
+    <!-- ── Projects ── -->
+    <section id="projects">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">Get In Touch</h2>
-                    <hr class="primary">
-                    <p>Hiring for quant development, market data engineering, or AI-enabled data platforms? Let’s talk. Based in Johannesburg and open to relocation across EMEA.</p>
-                </div>
-                <div class="col-lg-2 col-lg-offset-3 col-sm-4 text-center">
-                    <a href="https://github.com/shashireddy40" class="contact-link">
-                        <i class="fa fa-github fa-3x wow bounceIn"></i>
-                        <span>GitHub</span>
-                    </a>
-                </div>
-                <div class="col-lg-2 col-sm-4 text-center">
-                    <a href="https://www.linkedin.com/in/dataengrsa" class="contact-link">
-                        <i class="fa fa-linkedin fa-3x wow bounceIn"></i>
-                        <span>LinkedIn</span>
-                    </a>
-                </div>
-                <div class="col-lg-2 col-sm-4 text-center">
-                    <a href="mailto:shashireddy40@gmail.com" class="contact-link">
-                        <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
-                        <span>Email</span>
-                    </a>
+            <div class="reveal">
+                <p class="eyebrow">Project Portfolio</p>
+                <h2 class="section-title">Data platforms, fintech systems, and quant research.</h2>
+            </div>
+            <div class="projects">
+                <a href="https://quantala.io/" target="_blank" rel="noopener noreferrer" class="project project-featured glass glass-hover reveal">
+                    <div class="project-media q-preview" aria-label="Quantala dashboards preview">
+                        <svg viewBox="0 0 600 220" preserveAspectRatio="none" aria-hidden="true">
+                            <defs>
+                                <linearGradient id="qline" x1="0" x2="1"><stop offset="0" stop-color="#2dd4ff"/><stop offset=".6" stop-color="#a78bfa"/><stop offset="1" stop-color="#f472b6"/></linearGradient>
+                                <linearGradient id="qfill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#2dd4ff" stop-opacity=".28"/><stop offset="1" stop-color="#2dd4ff" stop-opacity="0"/></linearGradient>
+                            </defs>
+                            <path d="M0 170 L40 158 L80 164 L120 140 L160 146 L200 120 L240 128 L280 104 L320 112 L360 86 L400 94 L440 70 L480 78 L520 52 L560 60 L600 40 L600 220 L0 220 Z" fill="url(#qfill)"/>
+                            <path d="M0 170 L40 158 L80 164 L120 140 L160 146 L200 120 L240 128 L280 104 L320 112 L360 86 L400 94 L440 70 L480 78 L520 52 L560 60 L600 40" fill="none" stroke="url(#qline)" stroke-width="3"/>
+                            <g class="candles">
+                                <line x1="60" y1="150" x2="60" y2="186"/><rect x="54" y="158" width="12" height="20" class="up"/>
+                                <line x1="140" y1="132" x2="140" y2="172"/><rect x="134" y="140" width="12" height="22" class="dn"/>
+                                <line x1="220" y1="108" x2="220" y2="150"/><rect x="214" y="116" width="12" height="24" class="up"/>
+                                <line x1="300" y1="92" x2="300" y2="132"/><rect x="294" y="100" width="12" height="20" class="up"/>
+                                <line x1="380" y1="76" x2="380" y2="118"/><rect x="374" y="86" width="12" height="22" class="dn"/>
+                                <line x1="460" y1="58" x2="460" y2="98"/><rect x="454" y="64" width="12" height="24" class="up"/>
+                                <line x1="540" y1="38" x2="540" y2="80"/><rect x="534" y="46" width="12" height="22" class="up"/>
+                            </g>
+                        </svg>
+                        <div class="q-chips">
+                            <span>Indices</span><span>Crude Oil</span><span>Volume Clusters</span><span>Market X-Ray</span>
+                            <span>Volume Shocker AI</span><span>VWAP Intraday</span><span>Stocks Screener</span>
+                        </div>
+                        <div class="q-badge"><span class="live-dot"></span>quantala.io · live dashboards</div>
+                    </div>
+                    <div class="project-body">
+                        <span class="tag c-cyan">Quant Finance · Live</span>
+                        <h3>Quantala <i class="fa fa-arrow-right"></i></h3>
+                        <p>Streaming market data, order-flow strategies, ClickHouse features, and AI-assisted signal scoring.</p>
+                    </div>
+                </a>
+                <a href="enbl.html" class="project glass glass-hover reveal">
+                    <div class="project-media">
+                        <div class="eb-logo"><div class="mark">EB</div><strong>enable</strong><span>benefits</span></div>
+                    </div>
+                    <div class="project-body">
+                        <span class="tag c-pink">Fintech Data Specialist</span>
+                        <h3>Enable Benefits <i class="fa fa-arrow-right"></i></h3>
+                        <p>AI-ready data platforms, Llama 3 document analysis, multi-format ingestion, and research workflows for a Canadian benefits company.</p>
+                    </div>
+                </a>
+                <a href="tuiproject.html" class="project glass glass-hover reveal">
+                    <div class="project-media"><img src="img/TUI.jpg" alt="TUI Group" loading="lazy"></div>
+                    <div class="project-body">
+                        <span class="tag c-violet">Data Analytics</span>
+                        <h3>TUI Group UK <i class="fa fa-arrow-right"></i></h3>
+                        <p>Big data engineering and analytics for one of the world's leading travel companies.</p>
+                    </div>
+                </a>
+                <a href="jumoproject.html" class="project glass glass-hover reveal">
+                    <div class="project-media"><img src="img/jumo.jpg" alt="JUMO" loading="lazy"></div>
+                    <div class="project-body">
+                        <span class="tag c-amber">Data Systems</span>
+                        <h3>JUMO <i class="fa fa-arrow-right"></i></h3>
+                        <p>Senior data engineering for mobile financial services, lending, savings, and EDW workflows.</p>
+                    </div>
+                </a>
+                <a href="OMSA2.html" class="project glass glass-hover reveal">
+                    <div class="project-media"><img src="img/OldMutual.jpg" alt="Old Mutual South Africa" loading="lazy"></div>
+                    <div class="project-body">
+                        <span class="tag c-green">AWS Data Engineering</span>
+                        <h3>Old Mutual SA <i class="fa fa-arrow-right"></i></h3>
+                        <p>Cloud data pipelines, production data movement, and analytics engineering.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Contact ── -->
+    <section id="contact">
+        <div class="container">
+            <div class="contact glass reveal">
+                <p class="eyebrow">Get In Touch</p>
+                <h2 class="section-title">Let’s build something <span class="grad-text">data-driven.</span></h2>
+                <p class="section-lead">Hiring for quant development, market data engineering, or AI-enabled data platforms? Let’s talk. Based in Johannesburg and open to relocation across EMEA.</p>
+                <div class="contact-links">
+                    <a href="mailto:shashireddy40@gmail.com" class="contact-link glass glass-hover"><i class="fa fa-envelope-o" style="color: var(--cyan)"></i> shashireddy40@gmail.com</a>
+                    <a href="https://www.linkedin.com/in/dataengrsa" class="contact-link glass glass-hover" target="_blank" rel="noopener noreferrer"><i class="fa fa-linkedin" style="color: var(--violet)"></i> LinkedIn</a>
+                    <a href="https://github.com/shashireddy40" class="contact-link glass glass-hover" target="_blank" rel="noopener noreferrer"><i class="fa fa-github" style="color: var(--pink)"></i> GitHub</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="portfolio-footer"><p>Shashidhar Reddy · Johannesburg, South Africa</p><a href="mailto:shashireddy40@gmail.com">shashireddy40@gmail.com</a> · <a href="resume/Shashi_resume.pdf">Download resume</a></footer>
+    <footer>
+        <p>Shashidhar Reddy · Johannesburg, South Africa</p>
+        <a href="mailto:shashireddy40@gmail.com">shashireddy40@gmail.com</a> · <a href="resume/Shashi_resume.pdf">Download resume</a>
+    </footer>
 
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.easing.min.js"></script>
-    <script src="js/jquery.fittext.js"></script>
-    <script src="js/wow.min.js"></script>
-    <script src="js/creative.js"></script>
+    <script>
+        // Mobile nav toggle
+        const nav = document.getElementById("nav");
+        document.getElementById("navToggle").addEventListener("click", () => nav.classList.toggle("open"));
+        nav.querySelectorAll(".nav-links a").forEach(a => a.addEventListener("click", () => nav.classList.remove("open")));
 
+        // Reveal on scroll
+        const io = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+        }, { threshold: 0.12 });
+        document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+        // Highlight the nav link for the section in view
+        const links = [...document.querySelectorAll('.nav-links a[href^="#"]')];
+        const spy = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (!e.isIntersecting) return;
+                links.forEach(l => l.classList.toggle("active", l.getAttribute("href") === "#" + e.target.id));
+            });
+        }, { rootMargin: "-45% 0px -50% 0px" });
+        document.querySelectorAll("section[id]").forEach(s => spy.observe(s));
+    </script>
 </body>
 
 </html>
